@@ -6,6 +6,14 @@ from textSummarizer.pipeline.stage_05_model_evaluation import ModelEvaluationTra
 from textSummarizer.logging import logger
 
 
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 STAGE_NAME = "Data Ingestion stage"
 try:
    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
@@ -67,3 +75,6 @@ try:
 except Exception as e:
         logger.exception(e)
         raise e
+
+
+
